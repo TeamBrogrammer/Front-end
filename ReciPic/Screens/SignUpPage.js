@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, ImageBackground, TouchableOpacity, View, SafeAreaView,TextInput } from 'react-native';
 
-export default function LoginPage({navigation}) {
+export default function SignUpPage({navigation}) {
     return (
         <View style= {styles.bgContainer}>
             <SafeAreaView>
@@ -18,27 +18,26 @@ export default function LoginPage({navigation}) {
                     </View>
                     
                     <View>
+                        <TextInput style= {styles.inputText} placeholder={'Full Name'} placeholderTextColor={'#D8D3BF'}/>
+                    </View>
+
+                    <View>
                         <TextInput style= {styles.inputText} placeholder={'Password'} secureTextEntry = {true} placeholderTextColor={'#D8D3BF'}/>        
                     </View>
 
                 </View>
 
-                {/* Create the "Forgot Password" button */}
-                <TouchableOpacity>
-                            <Text style= {styles.forgotPasswordButtonText}>Forgot Password</Text>
-                </TouchableOpacity>
-
                 {/* Create the "Login" button */}
                 <TouchableOpacity style = {styles.buttonStyle}>
-                        <Text style = {styles.buttonText}>Login</Text>
+                        <Text style = {styles.buttonText}>Sign Up</Text>
                 </TouchableOpacity>
 
                 {/* Create a View to place the buttons at the bottom of the screen */}
                 <View style = {styles.bottomContainer}>
-            
+                    
                     {/* Create a button to go to the Sign Up screen */}
-                    <TouchableOpacity style = {styles.signUpButton}>
-                        <Text style = {styles.signUpButtonText}>Don't have an account? Sign Up.</Text>
+                    <TouchableOpacity style = {styles.loginButton}>
+                        <Text style = {styles.loginButtonText}>Have an account? Login.</Text>
                     </TouchableOpacity>
 
                 </View>
@@ -65,7 +64,7 @@ const styles = StyleSheet.create({
     bottomContainer: {
         flex: 1,
         justifyContent: 'flex-end',
-        marginBottom: 30,
+        marginBottom: 30
     },
     buttonStyle: {
         backgroundColor: '#D8D3BF',
@@ -82,12 +81,12 @@ const styles = StyleSheet.create({
         marginVertical: 10,
         fontSize: 22 
     },
-    signUpButton: {
+    loginButton: {
         alignItems: 'center',
         marginTop: 15,
-        marginBottom: 5,
+        marginBottom: 5
     },
-    signUpButtonText: {
+    loginButtonText: {
         color: '#D8D3BF',        
         fontSize: 18,
     },
@@ -106,10 +105,5 @@ const styles = StyleSheet.create({
     },
     textInputContainer: {
         marginTop: 60        
-    },
-    forgotPasswordButtonText: {
-        marginTop:-15,
-        color: "#D8D3BF",
-        textAlign: "right"
     }
 });
