@@ -15,7 +15,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 // Import all the pages
-import userPage from './Screens/LoginPage';
+import userPage from './Screens/ResetPasswordPage';
 
 const Stack = createStackNavigator();
 
