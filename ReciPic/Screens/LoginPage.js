@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, ImageBackground, TouchableOpacity, View, SafeAreaView,TextInput } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View, SafeAreaView,TextInput } from 'react-native';
 
 export default function LoginPage({navigation}) {
     return (

@@ -15,7 +15,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 // Import all the pages
-import userPage from './Screens/LoginPage';
+import userPage from './Screens/UserPage';
+import loginPage from './Screens/LoginPage';
+import signUpPage from './Screens/SignUpPage';
+import selectedRecipePage from './Screens/SelectedRecipePage';
 
 const Stack = createStackNavigator();
 
@@ -24,9 +27,12 @@ export default function App() {
   return (
 
     <NavigationContainer>
-      <Stack.Navigator initialRouteName = "userPage">
+      <Stack.Navigator initialRouteName = "selectedRecipePage">
 
         <Stack.Screen name="userPage" component={userPage} options={{ headerShown: false }}/>
+        <Stack.Screen name="loginPage" component={loginPage} options={{ headerShown: false }}/>
+        <Stack.Screen name="signUpPage" component={signUpPage} options={{ headerShown: false }}/>
+        <Stack.Screen name="selectedRecipePage" component={selectedRecipePage} options={{ headerShown: false }}/>
 
       </Stack.Navigator>
     </NavigationContainer>
