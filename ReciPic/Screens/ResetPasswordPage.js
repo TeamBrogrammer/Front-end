@@ -1,8 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View, SafeAreaView,TextInput } from 'react-native';
+import { StyleSheet, Text, ImageBackground, TouchableOpacity, View, SafeAreaView,TextInput } from 'react-native';
 
-export default function LoginPage({navigation}) {
+export default function ResetPasswordPage({navigation}) {
     return (
         <View style= {styles.bgContainer}>
             <SafeAreaView>
@@ -18,30 +18,20 @@ export default function LoginPage({navigation}) {
                     </View>
                     
                     <View>
-                        <TextInput style= {styles.inputText} placeholder={'Password'} secureTextEntry = {true} placeholderTextColor={'#D8D3BF'}/>        
+                        <TextInput style= {styles.inputText} placeholder={'Enter new password'} secureTextEntry = {true} placeholderTextColor={'#D8D3BF'}/>
+                    </View>
+
+                    <View>
+                        <TextInput style= {styles.inputText} placeholder={'Confirm new password'} secureTextEntry = {true} placeholderTextColor={'#D8D3BF'}/>        
                     </View>
 
                 </View>
 
-                {/* Create the "Forgot Password" button */}
-                <TouchableOpacity>
-                            <Text style= {styles.forgotPasswordButtonText}>Forgot Password</Text>
-                </TouchableOpacity>
-
                 {/* Create the "Login" button */}
                 <TouchableOpacity style = {styles.buttonStyle}>
-                        <Text style = {styles.buttonText}>Login</Text>
+                        <Text style = {styles.buttonText}>Reset Password</Text>
                 </TouchableOpacity>
 
-                {/* Create a View to place the buttons at the bottom of the screen */}
-                <View style = {styles.bottomContainer}>
-                    
-                    {/* Create a button to go to the Sign Up screen */}
-                    <TouchableOpacity style = {styles.signUpButton}>
-                        <Text style = {styles.signUpButtonText}>Don't have an account? Sign Up.</Text>
-                    </TouchableOpacity>
-
-                </View>
             </SafeAreaView>
         </View>
     );
@@ -60,12 +50,7 @@ const styles = StyleSheet.create({
         fontFamily: 'sans-serif',
         alignSelf: 'center',
         fontSize: 40,
-        marginTop: 250,
-    },
-    bottomContainer: {
-        width: 400,
-        borderTopWidth:  1,  
-        borderTopColor:  "#D8D3BF",
+        marginTop: 15,
     },
     buttonStyle: {
         backgroundColor: '#D8D3BF',
@@ -74,8 +59,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         width: 300,
         marginTop: 30,
-        marginLeft: 50,
-        marginBottom: 225,
     },
     buttonText: {
         fontFamily: 'sans-serif',
@@ -83,15 +66,6 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         marginVertical: 10,
         fontSize: 22 
-    },
-    signUpButton: {
-        alignItems: 'center',
-        marginTop: 15,
-        marginBottom: 5,   
-    },
-    signUpButtonText: {
-        color: '#D8D3BF',        
-        fontSize: 18,
     },
     inputText: {
         fontFamily: 'sans-serif',
@@ -108,11 +82,5 @@ const styles = StyleSheet.create({
     },
     textInputContainer: {
         marginTop: 60        
-    },
-    forgotPasswordButtonText: {
-        marginTop:-15,
-        marginRight: 50,
-        color: "#D8D3BF",
-        textAlign: "right"
     }
 });

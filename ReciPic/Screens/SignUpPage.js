@@ -34,7 +34,7 @@ export default function SignUpPage({navigation}) {
 
                 {/* Create a View to place the buttons at the bottom of the screen */}
                 <View style = {styles.bottomContainer}>
-                    
+            
                     {/* Create a button to go to the Sign Up screen */}
                     <TouchableOpacity style = {styles.loginButton}>
                         <Text style = {styles.loginButtonText}>Have an account? Login.</Text>
@@ -56,15 +56,15 @@ const styles = StyleSheet.create({
     },
     logoText: {
         color: '#D8D3BF',
-        fontFamily: 'Avenir-Heavy',
+        fontFamily: 'sans-serif',
         alignSelf: 'center',
         fontSize: 40,
         marginTop: 250,
     },
     bottomContainer: {
-        flex: 1,
-        justifyContent: 'flex-end',
-        marginBottom: 30
+        width: 400,
+        borderTopWidth:  1,  
+        borderTopColor:  "#D8D3BF", 
     },
     buttonStyle: {
         backgroundColor: '#D8D3BF',
@@ -73,9 +73,11 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         width: 300,
         marginTop: 30,
+        marginLeft: 50,
+        marginBottom:170
     },
     buttonText: {
-        fontFamily: 'Avenir-Heavy',
+        fontFamily: 'sans-serif',
         color: '#191c24',
         textAlign: 'center',
         marginVertical: 10,
@@ -91,13 +93,13 @@ const styles = StyleSheet.create({
         fontSize: 18,
     },
     inputText: {
-        fontFamily: 'Avenir-Heavy',
+        fontFamily: 'sans-serif',
         marginBottom: 20,
         height:45,
         fontSize: 18, 
         borderBottomWidth: 1,
         borderBottomColor: '#D8D3BF',
-        color: '#E59866',
+        color: '#D8D3BF',
         textAlignVertical: 'top',
         alignSelf: 'center',
         justifyContent: 'center',
