@@ -24,12 +24,16 @@ export default function LoginPage({navigation}) {
                 </View>
 
                 {/* Create the "Forgot Password" button */}
-                <TouchableOpacity>
-                            <Text style= {styles.forgotPasswordButtonText}>Forgot Password</Text>
+                <TouchableOpacity onPress = {() => {
+                    navigation.navigate('resetPasswordPage')
+                }}>
+                    <Text style= {styles.forgotPasswordButtonText}>Forgot Password</Text>
                 </TouchableOpacity>
 
                 {/* Create the "Login" button */}
-                <TouchableOpacity style = {styles.buttonStyle}>
+                <TouchableOpacity style = {styles.buttonStyle} onPress = {() => {
+                    navigation.navigate('homePage')
+                }}>
                         <Text style = {styles.buttonText}>Login</Text>
                 </TouchableOpacity>
 
@@ -37,7 +41,9 @@ export default function LoginPage({navigation}) {
                 <View style = {styles.bottomContainer}>
                     
                     {/* Create a button to go to the Sign Up screen */}
-                    <TouchableOpacity style = {styles.signUpButton}>
+                    <TouchableOpacity style = {styles.signUpButton} onPress = {() => {
+                        navigation.navigate('signUpPage')
+                    }}>
                         <Text style = {styles.signUpButtonText}>Don't have an account? Sign Up.</Text>
                     </TouchableOpacity>
 
@@ -57,7 +63,6 @@ const styles = StyleSheet.create({
     },
     logoText: {
         color: '#D8D3BF',
-        fontFamily: 'sans-serif',
         alignSelf: 'center',
         fontSize: 40,
         marginTop: 250,
@@ -78,7 +83,6 @@ const styles = StyleSheet.create({
         marginBottom: 225,
     },
     buttonText: {
-        fontFamily: 'sans-serif',
         color: '#191c24',
         textAlign: 'center',
         marginVertical: 10,
@@ -94,7 +98,6 @@ const styles = StyleSheet.create({
         fontSize: 18,
     },
     inputText: {
-        fontFamily: 'sans-serif',
         marginBottom: 20,
         height:45,
         fontSize: 18, 

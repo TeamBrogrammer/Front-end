@@ -13,7 +13,7 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 
 
-import colors from './Colors'
+import colors from '../Colors'
 
 const imageItem = [
     {
@@ -74,7 +74,7 @@ const imageItem = [
 ];
 
 
-export default function Recipes() {
+export default function Recipes({navigation}) {
     return (
 
         <View style={styles.container}>

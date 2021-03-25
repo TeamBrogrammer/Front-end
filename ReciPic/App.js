@@ -19,6 +19,10 @@ import userPage from './Screens/UserPage';
 import loginPage from './Screens/LoginPage';
 import signUpPage from './Screens/SignUpPage';
 import selectedRecipePage from './Screens/SelectedRecipePage';
+import recipesPage from './Screens/Recipes';
+import resetPasswordPage from './Screens/ResetPasswordPage';
+import homePage from './Screens/SearchRecipe';
+
 
 const Stack = createStackNavigator();
 
@@ -27,36 +31,18 @@ export default function App() {
   return (
 
     <NavigationContainer>
-      <Stack.Navigator initialRouteName = "selectedRecipePage">
+      <Stack.Navigator initialRouteName = "userPage">
 
         <Stack.Screen name="userPage" component={userPage} options={{ headerShown: false }}/>
         <Stack.Screen name="loginPage" component={loginPage} options={{ headerShown: false }}/>
         <Stack.Screen name="signUpPage" component={signUpPage} options={{ headerShown: false }}/>
         <Stack.Screen name="selectedRecipePage" component={selectedRecipePage} options={{ headerShown: false }}/>
+        <Stack.Screen name="recipesPage" component={recipesPage} options={{ headerShown: false }}/>
+        <Stack.Screen name="resetPasswordPage" component={resetPasswordPage} options={{ headerShown: false }}/>
+        <Stack.Screen name="homePage" component={homePage} options={{ headerShown: false }}/>
+
 
       </Stack.Navigator>
     </NavigationContainer>
   );
-
-
-  // const [isLoaded] = useFonts({
-  //   "Blogger": require("./assets/Fonts/BloggerSans-Bold.otf"),
-  // });
-
-  // if (!isLoaded) {
-  //   return <AppLoading />;
-
-  // } else {
-
-    // return (
-
-    //   <NavigationContainer>
-    //     <Stack.Navigator initialRouteName = "userPage">
-  
-    //       <Stack.Screen name="userPage" component={userPage} options={{ headerShown: false }}/>
-  
-    //     </Stack.Navigator>
-    //   </NavigationContainer>
-    // );
-  // }
 }

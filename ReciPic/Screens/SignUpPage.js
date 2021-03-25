@@ -27,18 +27,22 @@ export default function SignUpPage({navigation}) {
 
                 </View>
 
-                {/* Create the "Login" button */}
-                <TouchableOpacity style = {styles.buttonStyle}>
+                {/* Create the "Signup" button */}
+                <TouchableOpacity style = {styles.buttonStyle} onPress = {() => {
+                    navigation.navigate('homePage')
+                }}>
                         <Text style = {styles.buttonText}>Sign Up</Text>
                 </TouchableOpacity>
 
                 {/* Create a View to place the buttons at the bottom of the screen */}
                 <View style = {styles.bottomContainer}>
             
-                    {/* Create a button to go to the Sign Up screen */}
-                    <TouchableOpacity style = {styles.loginButton}>
-                        <Text style = {styles.loginButtonText}>Have an account? Login.</Text>
-                    </TouchableOpacity>
+                {/* Create a button to go to the Login screen */}
+                <TouchableOpacity style = {styles.loginButton} onPress = {() => {
+                    navigation.navigate('loginPage')
+                }}>
+                    <Text style = {styles.loginButtonText}>Have an account? Login.</Text>
+                </TouchableOpacity>
 
                 </View>
             </SafeAreaView>
@@ -56,7 +60,6 @@ const styles = StyleSheet.create({
     },
     logoText: {
         color: '#D8D3BF',
-        fontFamily: 'sans-serif',
         alignSelf: 'center',
         fontSize: 40,
         marginTop: 250,
@@ -77,7 +80,6 @@ const styles = StyleSheet.create({
         marginBottom:170
     },
     buttonText: {
-        fontFamily: 'sans-serif',
         color: '#191c24',
         textAlign: 'center',
         marginVertical: 10,
@@ -93,7 +95,6 @@ const styles = StyleSheet.create({
         fontSize: 18,
     },
     inputText: {
-        fontFamily: 'sans-serif',
         marginBottom: 20,
         height:45,
         fontSize: 18, 

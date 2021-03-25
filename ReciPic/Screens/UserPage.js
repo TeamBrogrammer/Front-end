@@ -19,17 +19,23 @@ export default function UserPage({navigation}) {
                 <View style = {styles.bottomContainer}>
 
                     {/* Create the "Register" button */}
-                    <TouchableOpacity style = {styles.buttonStyle}>
+                    <TouchableOpacity style = {styles.buttonStyle} onPress = {() => {
+                        navigation.navigate('signUpPage')
+                    }}>
                         <Text style = {styles.buttonText}>Register</Text>
                     </TouchableOpacity>
 
                     {/* Create the "Use as Guest" button */}
-                    <TouchableOpacity style = {styles.buttonStyle}>
+                    <TouchableOpacity style = {styles.buttonStyle} onPress = {() => {
+                        navigation.navigate('homePage')
+                    }}>
                         <Text style = {styles.buttonText}>Use as Guest</Text>
                     </TouchableOpacity>
 
                     {/* Create a button to go to the login screen */}
-                    <TouchableOpacity style = {styles.loginButton}>
+                    <TouchableOpacity style = {styles.loginButton} onPress = {() => {
+                        navigation.navigate('loginPage')
+                    }}>
                         <Text style = {styles.loginButtonText}>Have an account? Login</Text>
                     </TouchableOpacity>
 

@@ -2,61 +2,61 @@ import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Image, FlatList } from 'react-native';
 
 
-import colors from './Colors'
+import colors from '../Colors'
 import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
-import AppButton from './components/AppButton';
+import AppButton from '../components/AppButton';
 
 
 
 
 const imageItem = [
     {
-        id: 1,
+        id: '1',
         title: 'Prawn Rice',
         ingredients: ' lettuce, leeks, cauli flower lettuce, leeks, cauli flower leeks, cauli flower  ',
         itemUrl: 'https://www.woovly.com/blog/wp-content/uploads/2019/11/bhelpuri1-650x350.jpg',
 
     },
     {
-        id: 2,
+        id: '2',
         title: 'Grilled Chicken Shawarma',
         ingredients: ' lettuce, leeks, cauli flower ',
         itemUrl: 'https://t3.ftcdn.net/jpg/02/55/42/50/360_F_255425068_CyDrGsVcu1Bl2SdJ2yXx35Rlp8jyNCCQ.jpg',
     },
     {
-        id: 3,
+        id: '3',
         title: 'Pepperoni Pizza',
         ingredients: ' lettuce, leeks, cauli flower',
         itemUrl: 'https://www.rnz.co.nz/assets/news_crops/60885/eight_col_32917696_l.jpg?1531180823',
     },
     {
-        id: 4,
+        id: '4',
         title: 'Vegetable Hakka Noodles',
         ingredients: ' lettuce, leeks, cauli flower',
         itemUrl: 'https://www.cookwithmanali.com/wp-content/uploads/2014/11/Hakka-Noodles-1-500x375.jpg',
     },
     {
-        id: 5,
+        id: '5',
         title: 'Spicy Macaroni',
         ingredients: ' lettuce, leeks, cauli flower',
         itemUrl: 'https://img.freepik.com/free-photo/macaroni-pasta-tomato-sauce-with-spoon-wood-wooden-table_66899-1155.jpg?size=626&ext=jpg',
     },
     {
-        id: 6,
+        id: '6',
         title: 'Chilly Toast',
         ingredients: ' lettuce, leeks, cauli flower',
         itemUrl: 'https://bellyonmymind.com/wp-content/uploads/2018/10/IMG_5048.jpg',
     },
 
     {
-        id: 7,
+        id: '7',
         title: 'White Sauce Pasta',
         ingredients: ' lettuce, leeks, cauli flower',
         itemUrl: 'https://static.toiimg.com/photo/54292840.cms',
     },
 
     {
-        id: 8,
+        id: '8',
         title: 'Classic Chicken Sub',
         ingredients: ' lettuce, leeks, cauli flower',
         itemUrl: 'https://st4.depositphotos.com/1006753/22144/i/1600/depositphotos_221441778-stock-photo-classic-blt-sandwiches.jpg',
@@ -70,9 +70,7 @@ const imageItem = [
 
 
 
-export default function SearchRecipe() {
-
-
+export default function SearchRecipe({navigation}) {
     return (
 
 
@@ -149,7 +147,9 @@ export default function SearchRecipe() {
             </View>
             <View style={styles.footer}>
 
-                <TouchableOpacity >
+                <TouchableOpacity onPress = {() => {
+                    navigation.navigate('homePage')
+                }}>
 
                     <MaterialCommunityIcons
                         style={styles.heartIcon}
@@ -158,7 +158,9 @@ export default function SearchRecipe() {
 
                 </TouchableOpacity>
 
-                <TouchableOpacity>
+                <TouchableOpacity onPress = {() => {
+                    navigation.navigate('homePage') // Open Camera
+                }}>
 
                     <MaterialCommunityIcons
                         style={styles.camIcon}

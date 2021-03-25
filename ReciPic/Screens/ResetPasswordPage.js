@@ -28,8 +28,10 @@ export default function ResetPasswordPage({navigation}) {
                 </View>
 
                 {/* Create the "Login" button */}
-                <TouchableOpacity style = {styles.buttonStyle}>
-                        <Text style = {styles.buttonText}>Reset Password</Text>
+                <TouchableOpacity style = {styles.buttonStyle} onPress = {() => {
+                    navigation.navigate('homePage')
+                }}>
+                    <Text style = {styles.buttonText}>Reset Password</Text>
                 </TouchableOpacity>
 
             </SafeAreaView>
@@ -47,7 +49,6 @@ const styles = StyleSheet.create({
     },
     logoText: {
         color: '#D8D3BF',
-        fontFamily: 'sans-serif',
         alignSelf: 'center',
         fontSize: 40,
         marginTop: 15,
@@ -61,14 +62,12 @@ const styles = StyleSheet.create({
         marginTop: 30,
     },
     buttonText: {
-        fontFamily: 'sans-serif',
         color: '#191c24',
         textAlign: 'center',
         marginVertical: 10,
         fontSize: 22 
     },
     inputText: {
-        fontFamily: 'sans-serif',
         marginBottom: 20,
         height:45,
         fontSize: 18, 
