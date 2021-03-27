@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     },
 
     logoText: {
-        fontFamily: 'Avenir-Heavy',
+      
         alignSelf: 'center',
         fontSize: 40,
         marginTop: 250,
