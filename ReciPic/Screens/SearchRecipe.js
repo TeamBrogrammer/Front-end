@@ -1,10 +1,20 @@
-import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Image, FlatList } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet,
+         Text, 
+         View, 
+         TouchableOpacity, 
+         ScrollView, 
+         Image, 
+         FlatList,
+         TextInput
+         } from 'react-native';
 
 
 import colors from '../Colors'
 import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
-import AppButton from '../components/AppButton';
+
+
+
 
 
 
@@ -70,7 +80,27 @@ const imageItem = [
 
 
 
-export default function SearchRecipe({navigation}) {
+export default function SearchRecipe({ navigation }) {
+
+    const [searchQuery, setSearchQuery] = useState({
+
+    });
+
+  
+
+        // const handleSearch = query => {
+        //     setState({ searchQuery: query })
+        // }
+
+
+
+
+      let handleSearch = text => {
+        setSearchQuery({ searchQuery: text })
+        };
+      
+
+
     return (
 
 
@@ -83,7 +113,7 @@ export default function SearchRecipe({navigation}) {
             </View>
             <View style={styles.bar}>
 
-                <AppButton title='Search'
+                {/* <AppButton title='Search'
                     color={colors.themeLight}
                     onPress={() => { console.log('hi') }}
                     Icon={FontAwesome}
@@ -91,7 +121,31 @@ export default function SearchRecipe({navigation}) {
                     iconColor={colors.black}
                     iconSize={30}
                 >
-                </AppButton>
+                </AppButton> */}
+
+                <View style={styles.containerSearchBox}>
+
+
+
+                    <TextInput
+                        style={styles.searchBox}
+                        name="query"
+                        value={searchQuery}
+                        placeholder="Search..."
+                        onChange={text => handleSearch(text)}
+
+
+                    />
+
+                    <FontAwesome
+                        name={"search"}
+                        color={colors.black}
+                        size={30}
+                        style={styles.iconPosition}
+
+                    />
+
+                </ View>
 
             </View>
 
@@ -101,53 +155,53 @@ export default function SearchRecipe({navigation}) {
 
 
             <View style={styles.imageContent}>
+                <>
+                    <ScrollView horizontal={true}>
 
-                <ScrollView horizontal={true}>
-
-                    <FlatList
-                        data={imageItem}
-                        keyExtractor={item => item.id}
-                        horizontal
-                        renderItem={({ item }) =>
-
-
-
-                            <View style = {styles.foodContent}>
-                                <Image
-                                    style={{
-                                        width: 190,
-                                        height: 100,
-                                        borderRadius: 15,
-                                        overflow: 'hidden',
-                                        marginBottom: 10
+                        <FlatList
+                            data={imageItem}
+                            keyExtractor={item => item.id}
+                            horizontal
+                            renderItem={({ item }) =>
 
 
 
+                                <View style={styles.foodContent}>
+                                    <Image
+                                        style={{
+                                            width: 190,
+                                            height: 100,
+                                            borderRadius: 15,
+                                            overflow: 'hidden',
+                                            marginBottom: 10
 
-                                    }}
-                                    source={{ uri: item.itemUrl }}
-                                />
 
-                                <View style={styles.foodDetails}>
 
-                                    <Text style={styles.title}> {item.title} </Text>
-                                    <Text style={styles.ingredients}
-                                      numberOfLines = {2}       
-                                    >
-                                         {item.ingredients} </Text>
+
+                                        }}
+                                        source={{ uri: item.itemUrl }}
+                                    />
+
+                                    <View style={styles.foodDetails}>
+
+                                        <Text style={styles.title}> {item.title} </Text>
+                                        <Text style={styles.ingredients}
+                                            numberOfLines={2}
+                                        >
+                                            {item.ingredients} </Text>
+                                    </View>
                                 </View>
-                            </View>
 
-                        }
-                    />
-                    {/* flatlist  ended */}
+                            }
+                        />
+                        {/* flatlist  ended */}
 
-                </ScrollView>
-
+                    </ScrollView>
+                </>
             </View>
             <View style={styles.footer}>
 
-                <TouchableOpacity onPress = {() => {
+                <TouchableOpacity onPress={() => {
                     navigation.navigate('homePage')
                 }}>
 
@@ -158,7 +212,7 @@ export default function SearchRecipe({navigation}) {
 
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress = {() => {
+                <TouchableOpacity onPress={() => {
                     navigation.navigate('homePage') // Open Camera
                 }}>
 
@@ -198,6 +252,19 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    containerSearchBox: {
+        flex:1,
+        alignItems: 'center'
+        
+    },
+    iconPosition: {
+        position: "absolute",
+        alignSelf: 'center',
+        paddingTop: 8,
+        paddingRight: 190,
+        marginRight: 5
+
+    },
     foodContent: {
         marginBottom: 100
     },
@@ -223,8 +290,8 @@ const styles = StyleSheet.create({
 
     imageContent: {
 
- 
-    
+
+
         flexDirection: 'row',
         width: '100%',
         height: 250,
@@ -243,13 +310,21 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         width: 200,
         marginTop: 10
-        
+
     },
 
     searchIcon: {
         alignSelf: 'center',
+    },
+
+    searchBox: {
 
 
+        textAlign: 'center',
+        backgroundColor: colors.themeLight,
+        borderRadius: 20,
+        width: '70%',
+        height: 45
     },
     textContainer: {
         flex: 1,
@@ -259,12 +334,12 @@ const styles = StyleSheet.create({
     textFav: {
         color: colors.themeLight,
         fontSize: 25,
-        position: "absolute",
+        position: "relative",
         alignSelf: "flex-start"
 
     },
     title: {
-        
+
         width: 200,
         fontSize: 22,
         fontWeight: 'bold',
