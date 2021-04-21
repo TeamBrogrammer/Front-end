@@ -16,6 +16,10 @@ export default function ResetPasswordPage({navigation}) {
                     <View>
                         <TextInput style= {styles.inputText} placeholder={'Email'} placeholderTextColor={'#D8D3BF'}/>
                     </View>
+
+                    <View>
+                        <TextInput style= {styles.inputText} placeholder={'Password'} placeholderTextColor={'#D8D3BF'}/>
+                    </View>
                     
                     <View>
                         <TextInput style= {styles.inputText} placeholder={'Enter new password'} secureTextEntry = {true} placeholderTextColor={'#D8D3BF'}/>
