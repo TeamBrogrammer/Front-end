@@ -1,54 +1,41 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useState } from 'react';
+import { render } from 'react-dom';
 import { StyleSheet, Text, TouchableOpacity, View, SafeAreaView,TextInput } from 'react-native';
+import { State } from 'react-native-gesture-handler';
 
 export default function SignUpPage({navigation}) {
 
-    constructor(props){
-        super(props)
-        this.state={
-            FullName:'',
-            Email:'',
-            Password:'',
-            success:''
-        };
-    }
+    const [FullName, setName] = useState("");
+    const [Email, setEmail] = useState("");
+    const [Password, setPassword] = useState("");
+    const [Status, setStatus] = useState("");
     
-
-    submit=() => {
-        if(Object.keys(this.state.Fullname).length==0){
+    const submit=()=>{
+        if(Fullname.Text.length==0){
           alert("Please enter your Fullname")
-          this.setState({success:"notsuccess"})
+          setStatus("notsuccess")
+          return false;
         }
-        if(Object.keys(this.state.Email).length==0){
+        if(Email.Text.length==0){
           alert("Please enter your Email")
-          this.setState({success:"notsuccess"})
+          setStatus("notsuccess")
+          return false;
         }
-        if(Object.keys(this.state.Password).length==0){
+        if(Password.Text.length==0){
           alert("Please enter your Password")
-          this.setState({success:"notsuccess"})
+          setStatus("notsuccess")
+          return false;
         }
-        if(Object.keys(this.state.success).length==0){
-            // const WebApiPath ="http://localhost:3000/api/RecipeMaintenance/UserSignIn?Email=" + this.state.Email + "&Name=" + this.state.Fullname + "&Password" + this.state.Password + ""
-            // const userSignUp = async () => {
-            //   try {
-            //     return await axios.get(WebApiPath)
-            //     } catch (error) {
-            //       console.error(error)
-            //     }
-            //   }
-            //   const GetUserSignUP = async () => {
-            //   const status = await userSignUp()     
-            //   alert(status)
-            //   GetUserSignUP();
-            // }
-            alert(this.connect);
-
+        if(Status.Text.length==0){
+            alert(connect())
+            setState({success:"success"})
+            return true;
         }    
     }      
 
-    connect = ()=> {
-        const WebApiPath ="http://localhost:3000/api/RecipeMaintenance/UserSignIn?Email=" + this.state.Email + "&Name=" + this.state.Fullname + "&Password" + this.state.Password + "";
+    const connect = ()=> {
+        const WebApiPath ="http://localhost:3000/api/RecipeMaintenance/UserSignIn?Email=" + Email.Text + "&Name=" + Fullname.Text + "&Password" + Password.Text + "";
         fetch(WebApiPath).then(response => {
             if(response.status == 200){
                 return response.test();
@@ -74,23 +61,24 @@ export default function SignUpPage({navigation}) {
                     
                     {/* All 2 inputs  */}
                     <View>
-                        <TextInput style= {styles.inputText} placeholder={'Email'} placeholderTextColor={'#D8D3BF'} onChangeText={text=>{this.setState({Email:text});this.setState({success:''})}}/>
+                        <TextInput style= {styles.inputText} placeholder={'Email'} placeholderTextColor={'#D8D3BF'} onChangeText={text=>{setEmail(text);}}/>
                     </View>
                     
                     <View>
-                        <TextInput style= {styles.inputText} placeholder={'Full Name'} placeholderTextColor={'#D8D3BF'} onChangeText={text=>{this.setState({FullName:text});this.setState({success:''})}}/>
+                        <TextInput style= {styles.inputText} placeholder={'Full Name'} placeholderTextColor={'#D8D3BF'} onChangeText={text=>{setName(text);}}/>
                     </View>
 
                     <View>
-                        <TextInput style= {styles.inputText} placeholder={'Password'} secureTextEntry = {true} placeholderTextColor={'#D8D3BF'} onChangeText={text=>{this.setState({Password:text});this.setState({success:''})}}/>        
+                        <TextInput style= {styles.inputText} placeholder={'Password'} secureTextEntry = {true} placeholderTextColor={'#D8D3BF'} onChangeText={text=>{setPassword(text);}}/>        
                     </View>
 
                 </View>
 
                 {/* Create the "Signup" button */}
                 <TouchableOpacity style = {styles.buttonStyle} onPress = {() => {
-                    this.submit,
-                    navigation.navigate('homePage')
+                    submit().then(function (status){
+                        navigation.navigate('homePage');
+                    });
                 }}>
                         <Text style = {styles.buttonText}>Sign Up</Text>
                 </TouchableOpacity>
