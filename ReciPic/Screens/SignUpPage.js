@@ -3,6 +3,66 @@ import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View, SafeAreaView,TextInput } from 'react-native';
 
 export default function SignUpPage({navigation}) {
+
+    constructor(props){
+        super(props)
+        this.state={
+            FullName:'',
+            Email:'',
+            Password:'',
+            success:''
+        };
+    }
+    
+
+    submit=() => {
+        if(Object.keys(this.state.Fullname).length==0){
+          alert("Please enter your Fullname")
+          this.setState({success:"notsuccess"})
+        }
+        if(Object.keys(this.state.Email).length==0){
+          alert("Please enter your Email")
+          this.setState({success:"notsuccess"})
+        }
+        if(Object.keys(this.state.Password).length==0){
+          alert("Please enter your Password")
+          this.setState({success:"notsuccess"})
+        }
+        if(Object.keys(this.state.success).length==0){
+            // const WebApiPath ="http://localhost:3000/api/RecipeMaintenance/UserSignIn?Email=" + this.state.Email + "&Name=" + this.state.Fullname + "&Password" + this.state.Password + ""
+            // const userSignUp = async () => {
+            //   try {
+            //     return await axios.get(WebApiPath)
+            //     } catch (error) {
+            //       console.error(error)
+            //     }
+            //   }
+            //   const GetUserSignUP = async () => {
+            //   const status = await userSignUp()     
+            //   alert(status)
+            //   GetUserSignUP();
+            // }
+            alert(this.connect);
+
+        }    
+    }      
+
+    connect = ()=> {
+        const WebApiPath ="http://localhost:3000/api/RecipeMaintenance/UserSignIn?Email=" + this.state.Email + "&Name=" + this.state.Fullname + "&Password" + this.state.Password + "";
+        fetch(WebApiPath).then(response => {
+            if(response.status == 200){
+                return response.test();
+            }
+            else{
+                throw new Error("Oops! Unable to process your request !.");
+            }
+        }).then(resonseText => {
+            this.setState({response: resonseText})
+        }).catch(error => {
+            console.error(error.message);
+        })
+    }
+      
     return (
         <View style= {styles.bgContainer}>
             <SafeAreaView>
@@ -14,21 +74,22 @@ export default function SignUpPage({navigation}) {
                     
                     {/* All 2 inputs  */}
                     <View>
-                        <TextInput style= {styles.inputText} placeholder={'Email'} placeholderTextColor={'#D8D3BF'}/>
+                        <TextInput style= {styles.inputText} placeholder={'Email'} placeholderTextColor={'#D8D3BF'} onChangeText={text=>{this.setState({Email:text});this.setState({success:''})}}/>
                     </View>
                     
                     <View>
-                        <TextInput style= {styles.inputText} placeholder={'Full Name'} placeholderTextColor={'#D8D3BF'}/>
+                        <TextInput style= {styles.inputText} placeholder={'Full Name'} placeholderTextColor={'#D8D3BF'} onChangeText={text=>{this.setState({FullName:text});this.setState({success:''})}}/>
                     </View>
 
                     <View>
-                        <TextInput style= {styles.inputText} placeholder={'Password'} secureTextEntry = {true} placeholderTextColor={'#D8D3BF'}/>        
+                        <TextInput style= {styles.inputText} placeholder={'Password'} secureTextEntry = {true} placeholderTextColor={'#D8D3BF'} onChangeText={text=>{this.setState({Password:text});this.setState({success:''})}}/>        
                     </View>
 
                 </View>
 
                 {/* Create the "Signup" button */}
                 <TouchableOpacity style = {styles.buttonStyle} onPress = {() => {
+                    this.submit,
                     navigation.navigate('homePage')
                 }}>
                         <Text style = {styles.buttonText}>Sign Up</Text>

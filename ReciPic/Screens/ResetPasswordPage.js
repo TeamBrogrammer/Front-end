@@ -3,6 +3,19 @@ import React from 'react';
 import { StyleSheet, Text, ImageBackground, TouchableOpacity, View, SafeAreaView,TextInput } from 'react-native';
 
 export default function ResetPasswordPage({navigation}) {
+
+    class FarmerSignIn extends Component {
+        constructor(props){
+          super(props)
+          this.state={
+              FullName:'',
+              Email:'',
+              Password:'',
+              success:''
+          };
+        }
+    }
+
     return (
         <View style= {styles.bgContainer}>
             <SafeAreaView>
@@ -14,25 +27,26 @@ export default function ResetPasswordPage({navigation}) {
                     
                     {/* All 2 inputs  */}
                     <View>
-                        <TextInput style= {styles.inputText} placeholder={'Email'} placeholderTextColor={'#D8D3BF'}/>
+                        <TextInput style= {styles.inputText} placeholder={'Email'} placeholderTextColor={'#D8D3BF'} onChangeText={text=>{this.setState({Email:text});this.setState({success:''})}}/>
                     </View>
 
                     <View>
-                        <TextInput style= {styles.inputText} placeholder={'Password'} placeholderTextColor={'#D8D3BF'}/>
+                        <TextInput style= {styles.inputText} placeholder={'Password'} placeholderTextColor={'#D8D3BF'} onChangeText={text=>{this.setState({OldPassword:text});this.setState({success:''})}}/>
                     </View>
                     
                     <View>
-                        <TextInput style= {styles.inputText} placeholder={'Enter new password'} secureTextEntry = {true} placeholderTextColor={'#D8D3BF'}/>
+                        <TextInput style= {styles.inputText} placeholder={'Enter new password'} secureTextEntry = {true} placeholderTextColor={'#D8D3BF'} onChangeText={text=>{this.setState({NewPassword1:text});this.setState({success:''})}}/>
                     </View>
 
                     <View>
-                        <TextInput style= {styles.inputText} placeholder={'Confirm new password'} secureTextEntry = {true} placeholderTextColor={'#D8D3BF'}/>        
+                        <TextInput style= {styles.inputText} placeholder={'Confirm new password'} secureTextEntry = {true} placeholderTextColor={'#D8D3BF'} onChangeText={text=>{this.setState({NewPassword2:text});this.setState({success:''})}}/>        
                     </View>
 
                 </View>
 
                 {/* Create the "Login" button */}
                 <TouchableOpacity style = {styles.buttonStyle} onPress = {() => {
+                    this.submit,
                     navigation.navigate('homePage')
                 }}>
                     <Text style = {styles.buttonText}>Reset Password</Text>
